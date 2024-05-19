@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 const Page = () => {
   const levels = [
-    { level: 0, value: "EASY", cellsToRemove: 2 },
+    { level: 0, value: "EASY", cellsToRemove: 36 },
     { level: 1, value: "MEDIUM", cellsToRemove: 42 },
     { level: 2, value: "HARD", cellsToRemove: 48 }
   ];
