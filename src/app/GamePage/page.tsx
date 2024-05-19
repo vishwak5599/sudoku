@@ -19,7 +19,7 @@ export default function Home() {
                                                   [3, 4, 5, 2, 8, 6, 1, 7, 9]
                         ])
   const searchParams = useSearchParams()
-  const cellsToRemove = searchParams.get('cellsToRemove')
+  const cellsToRemove = searchParams ? searchParams.get('cellsToRemove') : "36"
 
   const [solvableSudoku, setSolvableSudoku] = useState<(number | null)[][]>([])
   const [clickedCell, setClickedCell] = useState({row:-1,col:-1})
