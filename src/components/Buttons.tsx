@@ -45,7 +45,7 @@ const Buttons:React.FC<ButtonsType> = ({solvableSudoku, clickedCell, setSolvable
                 <PiHeartStraightFill fill={"#FFFFFF"} size={30} key={index}/>
             ))}
             {Array.from({ length: 3-lifesLeft }, (_, index) => (
-                <PiHeartStraightBreakFill fill={"#FF0000"} key={index}/>
+                <PiHeartStraightBreakFill fill={"#FF0000"} size={30} key={index}/>
             ))}
         </div>
         <div className='flex gap-4'>
