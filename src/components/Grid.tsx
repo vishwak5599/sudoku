@@ -57,7 +57,8 @@ const Grid:React.FC<gridType> = ({solvableSudoku, clickedCell, setClickedCell, i
                 <div className="flex" key={rindex}>
                     {row.map((col,cindex)=>(
                         <div className={`flex text-black px-2.5 py-1 md:px-4 md:py-2 lg:px-5 lg:py-2 xxl:px-7 xxl:py-3.5 border-1 border-[#a75ef8] cursor-pointer
-                        
+
+                                ${col===null ? "px-2.8 md:px-4.2 lg:px-5.2 xxl:px-7.2" : ""}
                                 ${clickedCell.row===-1 && clickedCell.col===-1 ? "bg-white" : ""}
                                 ${!sameRCGCells.some(item => item.row===rindex && item.col===cindex) && clickedCell.row!==-1 && clickedCell.col!==-1 && solvableSudoku[rindex][cindex]!==solvableSudoku[clickedCell.row][clickedCell.col] && solvableSudoku[clickedCell.row][clickedCell.col]!==null ? "bg-white" : ""}
                                 ${clickedCell.row!==-1 && clickedCell.col!==-1 && ((solvableSudoku[clickedCell.row][clickedCell.col]!==null && solvableSudoku[rindex][cindex]===solvableSudoku[clickedCell.row][clickedCell.col]) || (solvableSudoku[clickedCell.row][clickedCell.col]===null && cindex===clickedCell.col && rindex===clickedCell.row)) ? "bg-violet-400" : ""}
