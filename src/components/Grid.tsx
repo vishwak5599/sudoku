@@ -19,7 +19,7 @@ interface gridType {
     }[]
 }
 
-const grid:React.FC<gridType> = ({solvableSudoku, clickedCell, setClickedCell, isCorrectChoice, removedCells}) => {
+const Grid:React.FC<gridType> = ({solvableSudoku, clickedCell, setClickedCell, isCorrectChoice, removedCells}) => {
 
     const [sameRCGCells, setSameRCGCells] = useState<{row: number,col: number}[]>([])
 
@@ -85,5 +85,5 @@ const grid:React.FC<gridType> = ({solvableSudoku, clickedCell, setClickedCell, i
     )
     }
 
-export default grid
+export default Grid
 

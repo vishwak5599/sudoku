@@ -13,9 +13,10 @@ interface cardsType {
       col: number;
     }[]
     setFilledCells : Dispatch<SetStateAction<number>>
+    setLifesLeft : Dispatch<SetStateAction<number>>
 }
 
-const PossibleCards:React.FC<cardsType> = ({clickedCell, setSolvableSudoku, solvedSudoku, setIsCorrectChoice, removedCells, setFilledCells}) => {
+const PossibleCards:React.FC<cardsType> = ({clickedCell, setSolvableSudoku, solvedSudoku, setIsCorrectChoice, removedCells, setFilledCells, setLifesLeft}) => {
 
   const selectNumbers:number[][] = [[1,2,3],[4,5,6],[7,8,9]]
   const [selectedChoice, setSelectedChoice] = useState({row:-1, col:-1})
@@ -37,6 +38,7 @@ const PossibleCards:React.FC<cardsType> = ({clickedCell, setSolvableSudoku, solv
       }
       else{
         setIsCorrectChoice(-1)
+        setLifesLeft((prev)=>prev-1)
       }
       setTimeout(() => {
         setIsCorrectChoice(0)

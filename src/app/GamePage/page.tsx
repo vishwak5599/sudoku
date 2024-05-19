@@ -28,10 +28,11 @@ const HomePageContent = () => {
   const [removedCells, setRemovedCells] = useState<{ row: number; col: number }[]>([]);
   const [isCorrectChoice, setIsCorrectChoice] = useState(0)
   const [filledCells, setFilledCells] = useState(81-difficulty)
+  const [lifesLeft, setLifesLeft] = useState(3)
 
   const removeCells = (solvedSudoku: (number | null)[][], difficulty: number) => {
     const solvableSudokuCopy: (number | null)[][] = solvedSudoku.map((row)=>[...row])
-    const removedCells: { row: number; col: number }[] = [];
+    const removedCells: { row: number; col: number }[] = []
     const removedCellsSet: Set<string> = new Set<string>()
 
     while(difficulty>0){
@@ -60,20 +61,20 @@ const HomePageContent = () => {
       setSolvableSudoku(solvableSudokuCopy);
       setRemovedCells(removedCells);
     }
-  }, [solvedSudoku, difficulty]);
+  }, [solvedSudoku, difficulty])
 
   return (
     <main className="flex flex-col h-screen w-screen font-anticDidone bg-[#BF77F6]">
-      {filledCells===81 ? <YouWonPage /> : 
+      {filledCells===81 || lifesLeft===0 ? <YouWonPage lifesLeft={lifesLeft} /> : 
         (
           <>
             <div className="text-xl md:text-2xl lg:text-3xl xxl:text-6xl text-center mt-3 lg:mt-6 xl:mt-7 -mb-3 -lg:mb-2 font-bold">SUDOKU</div>
             <div className="flex flex-col md:flex-row gap-6 lg:gap-16 items-center justify-center text-lg md:text-xl lg:text-xl xl:text-2xl">
               <div className="flex flex-col gap-4">
                 {loading ? <SkeletonGrid /> : <Grid solvableSudoku={solvableSudoku} clickedCell={clickedCell} setClickedCell={setClickedCell} isCorrectChoice={isCorrectChoice} removedCells={removedCells} />}
-                <Buttons solvableSudoku={solvableSudoku} clickedCell={clickedCell} setSolvableSudoku={setSolvableSudoku} setFilledCells={setFilledCells} />
+                <Buttons solvableSudoku={solvableSudoku} clickedCell={clickedCell} setSolvableSudoku={setSolvableSudoku} setFilledCells={setFilledCells} lifesLeft={lifesLeft} />
               </div>
-              <PossibleCards solvedSudoku={solvedSudoku} clickedCell={clickedCell} setSolvableSudoku={setSolvableSudoku} setIsCorrectChoice={setIsCorrectChoice} removedCells={removedCells} setFilledCells={setFilledCells} />
+              <PossibleCards solvedSudoku={solvedSudoku} clickedCell={clickedCell} setSolvableSudoku={setSolvableSudoku} setIsCorrectChoice={setIsCorrectChoice} removedCells={removedCells} setFilledCells={setFilledCells} setLifesLeft={setLifesLeft} />
             </div>
           </>
         )
