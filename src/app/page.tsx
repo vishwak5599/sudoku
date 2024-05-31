@@ -6,7 +6,7 @@ const Page = () => {
   const levels = [
     { level: 0, value: "EASY", cellsToRemove: 36 },
     { level: 1, value: "MEDIUM", cellsToRemove: 42 },
-    { level: 2, value: "HARD", cellsToRemove: 48 }
+    { level: 2, value: "HARD", cellsToRemove: 45 }
   ];
   const [isClicked, setIsClicked] = useState(-1);
   const router = useRouter();
